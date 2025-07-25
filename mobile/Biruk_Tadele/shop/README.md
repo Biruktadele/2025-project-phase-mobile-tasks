@@ -1,8 +1,8 @@
-# 🛍️ Flutter E-Commerce App
+# 🛍️ Flutter Shop App
 
-A modern, responsive e-commerce application built with Flutter, featuring product browsing, search functionality, and detailed product views.
 
-## ✨ Features
+
+## ✨ Ui Features
 
 - 🏠 **Home Screen** - Browse available products
 - 🔍 **Search & Filter** - Find products by category and price range
@@ -24,8 +24,8 @@ A modern, responsive e-commerce application built with Flutter, featuring produc
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/flutter-ecommerce-app.git
-   cd flutter-ecommerce-app
+   git clone https://github.com/Biruktadele/2025-project-phase-mobile-tasks.git
+
    ```
 
 2. **Install dependencies**
@@ -65,6 +65,14 @@ lib/
 - `intl`: For date and number formatting
 
 ## 📱 Screenshots
+
+
+<img src="https://github.com/Biruktadele/2025-project-phase-mobile-tasks/blob/main/mobile/Biruk_Tadele/shop/images/img4.jpg" alt="img2" width="400"/>
+<img src="https://github.com/Biruktadele/2025-project-phase-mobile-tasks/blob/main/mobile/Biruk_Tadele/shop/images/img1.jpg" alt="img2" width="400"/>
+<img src="https://github.com/Biruktadele/2025-project-phase-mobile-tasks/blob/main/mobile/Biruk_Tadele/shop/images/Img.jpg" alt="img2" width="400"/>
+<img src="https://github.com/Biruktadele/2025-project-phase-mobile-tasks/blob/main/mobile/Biruk_Tadele/shop/images/img3.jpg" alt="img2" width="400"/>
+<img src="https://github.com/Biruktadele/2025-project-phase-mobile-tasks/blob/main/mobile/Biruk_Tadele/shop/images/img2.jpg" alt="img2" width="400"/>
+```
 
 
 
