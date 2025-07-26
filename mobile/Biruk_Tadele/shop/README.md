@@ -24,8 +24,8 @@
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/Biruktadele/2025-project-phase-mobile-tasks.git
-
+   git clone -b feature/task-7-navigation-ui https://github.com/Biruktadele/2025-project-phase-mobile-tasks.git
+   cd 2025-project-phase-mobile-tasks/mobile/Biruk_Tadele/shop
    ```
 
 2. **Install dependencies**
