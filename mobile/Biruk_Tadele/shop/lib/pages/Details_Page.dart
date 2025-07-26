@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:shop/model/product.dart';
+import 'package:shop/pages/add_page.dart';
 import 'package:shop/widgets/rating.dart';
 import 'package:shop/widgets/Size.dart';
+
+
 class DetailsPage extends StatefulWidget {
   final Product item;
   const DetailsPage({required this.item , super.key});
@@ -9,13 +12,14 @@ class DetailsPage extends StatefulWidget {
   _DetailsPageState createState() => _DetailsPageState();
 }
 
-final Product item =  Product(
-      name: "Air Force 1",
-      price: "100",
-      image: "images/AirForce1White.jpg",
-      category: "Man's Shoe",
-      rating: "4.5",
-    );
+// final Product item =  Product(
+//       name: "Air Force 1",
+//       price: "100",
+//       image: "images/AirForce1White.jpg",
+//       category: "Man's Shoe",
+//       rating: "4.5",
+//       description: "Step into a legend. The Nike Air Force 1 blends classic style with modern comfort, delivering a clean, versatile look that never goes out of fashion. With its smooth leather upper, signature perforations, and cushioned Air-Sole unit, the AF1 offers everyday durability and all-day support. Whether you're hitting the streets or elevating your outfit, this sneaker speaks confidence and culture.",
+//     );
 class _DetailsPageState extends State<DetailsPage> {
   @override
   /// Details page for a product.
@@ -28,6 +32,8 @@ class _DetailsPageState extends State<DetailsPage> {
   /// sizes.
   @override
   Widget build(BuildContext context) {
+    List<Product> res = [widget.item];
+    
     return Scaffold(
       backgroundColor: Colors.white,
       
@@ -40,7 +46,7 @@ class _DetailsPageState extends State<DetailsPage> {
               height: 266,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage(item.image),
+                  image: AssetImage(res[0].image),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -54,7 +60,7 @@ class _DetailsPageState extends State<DetailsPage> {
                       decoration: BoxDecoration(shape: BoxShape.circle),
                       child: IconButton(
                         onPressed: () {
-                          Navigator.pop(context);
+                          Navigator.pop(context , res[0]);
                         },
                         icon: Icon(
                           Icons.arrow_back_ios,
@@ -74,7 +80,7 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   // Category
                   Text(
-                    item.category,
+                    res[0].category,
                     style: TextStyle(
                       fontFamily: "Poppins",
                       fontSize: 13,
@@ -86,7 +92,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   // Rating
                   StarToggle(),
                   Text(
-                    "(${item.rating})",
+                    "(${res[0].rating})",
                     style: TextStyle(
                       fontFamily: "Poppins",
                       fontSize: 13,
@@ -104,7 +110,7 @@ class _DetailsPageState extends State<DetailsPage> {
                 children: [
                   // Product name
                   Text(
-                    item.name,
+                    res[0].name,
                     style: TextStyle(
                       fontFamily: "Poppins",
                       fontSize: 24,
@@ -114,7 +120,7 @@ class _DetailsPageState extends State<DetailsPage> {
                   Spacer(),
                   // Price
                   Text(
-                    "\$${item.price}",
+                    "\$${res[0].price}",
                     style: TextStyle(
                       fontFamily: "Poppins",
                       fontSize: 13,
@@ -142,7 +148,7 @@ class _DetailsPageState extends State<DetailsPage> {
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 26.0, vertical: 16),
               child: Text(
-                "Step into a legend. The Nike Air Force 1 blends classic style with modern comfort, delivering a clean, versatile look that never goes out of fashion. With its smooth leather upper, signature perforations, and cushioned Air-Sole unit, the AF1 offers everyday durability and all-day support. Whether you're hitting the streets or elevating your outfit, this sneaker speaks confidence and culture.",
+                res[0].description,
                 textAlign: TextAlign.justify,
                 style: TextStyle(
                   fontFamily: "Poppins",
@@ -175,7 +181,30 @@ class _DetailsPageState extends State<DetailsPage> {
                   // Update button
                   Expanded(
                     child: OutlinedButton(
-                      onPressed: () {},
+                          onPressed: () async {
+                            Product result = await Navigator.push(
+                              context,
+                              PageRouteBuilder(
+                                transitionDuration: Duration(milliseconds: 500),
+                                pageBuilder: (_, __, ___) => AddPage(item: res[0]),
+                                transitionsBuilder: (_, animation, __, child) {
+                                  return SlideTransition(
+                                    position: Tween<Offset>(
+                                      begin: Offset(1.0, 0.0), // Slide from right
+                                      end: Offset.zero,
+                                    ).animate(animation),
+                                    child: child,
+                                  );
+                                },
+                              ),
+                            );
+
+                            setState(() {
+                              res[0] = result;
+                            });
+
+                            Navigator.pop(context, res[0]);
+                          },
                       style: OutlinedButton.styleFrom(
                         backgroundColor: Colors.blue,
                         foregroundColor: Colors.white,

@@ -1,20 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:shop/model/product.dart';
+import 'package:shop/pages/details_page.dart';
 import 'package:shop/widgets/pricebar.dart';
 
-final Product item = Product(
-  name: "Air Force 1",
-  price: "100",
-  image: "images/AirForce1White.jpg",
-  category: "Man's Shoe",
-  rating: "4.5",
-);
 
-class SearchPage extends StatelessWidget {
-  const SearchPage({super.key});
+class SearchPage extends StatefulWidget {
+  final Product item;
+
+  const SearchPage({super.key , required this.item}) ;
 
   @override
+  State<SearchPage> createState() => _SearchPageState();
+}
+
+class _SearchPageState extends State<SearchPage> {
+  @override
   Widget build(BuildContext context) {
+
+    // List<Product> res = [widget.item];
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -40,8 +43,8 @@ class SearchPage extends StatelessWidget {
         child: Column(
           children: [
             _categoryRow(),
-            item,
-            _productCard(),
+            widget.item,
+            _productCard(),          
             _searchForm(),
           ],
         ),
@@ -103,10 +106,10 @@ class SearchPage extends StatelessWidget {
           topRight: Radius.circular(12),
           topLeft: Radius.circular(12),
         ),
-        image: DecorationImage(
-          image: AssetImage(item.image),
-          fit: BoxFit.cover,
-        ),
+        // image: DecorationImage(
+        //   // image: AssetImage(widget.item.image),
+        //   fit: BoxFit.cover,
+        // ),
       ),
     );
   }
@@ -149,7 +152,6 @@ class SearchPage extends StatelessWidget {
             padding: const EdgeInsets.only(left: 28, top: 5),
             child: ElevatedButton(
               onPressed: () {},
-              child: Text("Search"),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue,
                 foregroundColor: Colors.white,
@@ -158,6 +160,7 @@ class SearchPage extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
+              child: Text("Search"),
             ),
           ),
         ],

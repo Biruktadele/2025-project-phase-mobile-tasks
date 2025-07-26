@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:shop/pages/Search_page.dart';
 import 'package:shop/model/product.dart';
+import 'package:shop/pages/add_page.dart';
 import 'package:shop/pages/details_page.dart';
 
-
-
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({super.key});
-  final Product item = Product(
-    name: "Air Force 1",
-    price: "100",
-    image: "images/AirForce1White.jpg",
-    category: "Man's Shoe",
-    rating: "4.5",
-  );
 
-  get icon => null;
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
 
+class _HomePageState extends State<HomePage> {
+  List<Product> res = [
+    Product(
+      name: "Air Force 1",
+      price: "100",
+      image: "images/AirForce1White.jpg",
+      category: "Man's Shoe",
+      rating: "4.5",
+      description:
+          "Step into a legend. The Nike Air Force 1 blends classic style with modern comfort, delivering a clean, versatile look that never goes out of fashion. With its smooth leather upper, signature perforations, and cushioned Air-Sole unit, the AF1 offers everyday durability and all-day support. Whether you're hitting the streets or elevating your outfit, this sneaker speaks confidence and culture.",
+    ),
+  ];
   @override
   /// The homepage of the app, which displays a list of products.
   ///
@@ -45,6 +51,7 @@ class HomePage extends StatelessWidget {
                       ),
                     ),
                   ),
+
                   /// A search button that navigates to the search page.
                   Padding(
                     padding: const EdgeInsets.only(left: 16),
@@ -59,7 +66,7 @@ class HomePage extends StatelessWidget {
                       onPressed: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
-                            builder: (context) => const SearchPage(),
+                            builder: (context) => SearchPage(item: res[0]),
                           ),
                         );
                       },
@@ -73,14 +80,41 @@ class HomePage extends StatelessWidget {
                 ],
               ),
             ),
+
             /// A list of products, each of which is a clickable card.
             /// When a product is tapped, it navigates to the details page.
-            productInfo(context, item),
-            productInfo(context, item),
-            productInfo(context, item),
+            productInfo(context, res[0]),
+            productInfo(context, res[0]),
+            productInfo(context, res[0]),
           ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+  onPressed: () async {
+    final result = await Navigator.push(
+      context,
+      PageRouteBuilder(
+        transitionDuration: Duration(milliseconds: 500),
+        pageBuilder: (context, animation, secondaryAnimation) => AddPage(item: res[0]),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(
+            opacity: animation,
+            child: child,
+          );
+        },
+      ),
+    );
+    setState(() {
+      res[0] = result;
+    });
+  },
+  shape: const CircleBorder(),
+  backgroundColor: Colors.blue,
+  child: const Icon(
+    Icons.add,
+    color: Colors.white,
+  ),
+),
     );
   }
 
@@ -91,14 +125,28 @@ class HomePage extends StatelessWidget {
   /// and navigates to the details page when tapped.
   Widget productInfo(BuildContext context, Product item) {
     return GestureDetector(
-      onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) => DetailsPage(item: item),
-          ),
-        );
-      },
-      child: item,
+  onTap: () async {
+    final result = await Navigator.of(context).push(
+      PageRouteBuilder(
+        transitionDuration: Duration(milliseconds: 500),
+        pageBuilder: (context, animation, secondaryAnimation) =>
+            DetailsPage(item: item),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(
+            opacity: animation,
+            child: child,
+          );
+        },
+      ),
     );
+
+    if (result != null) {
+      setState(() {
+        res[0] = result;
+      });
+    }
+  },
+  child: res[0],
+);
   }
 }

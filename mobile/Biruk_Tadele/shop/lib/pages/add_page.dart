@@ -1,13 +1,45 @@
 import 'package:flutter/material.dart';
+import 'package:shop/model/product.dart';
 
 class AddPage extends StatefulWidget {
-  AddPage({Key? key}) : super(key: key);
+  final Product item;
+  const AddPage({super.key, required this.item});
 
   @override
   _AddPageState createState() => _AddPageState();
 }
 
 class _AddPageState extends State<AddPage> {
+
+  late TextEditingController nameController;
+  late TextEditingController descriptionController;
+
+  @override
+  void initState() {
+    super.initState();
+    nameController = TextEditingController(text: widget.item.name);
+    descriptionController = TextEditingController(text: widget.item.description);
+  }
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    descriptionController.dispose();
+    super.dispose();
+  }
+
+  void _saveProduct() {
+    final product = Product(
+      name: nameController.text,
+      description: descriptionController.text,
+      price: widget.item.price,
+      image: widget.item.image,
+      category: widget.item.category,
+      rating: widget.item.rating,
+    );
+    Navigator.pop(context, product);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -97,6 +129,7 @@ class _AddPageState extends State<AddPage> {
         ),
         const SizedBox(height: 6),
         TextField(
+          controller: nameController,
           decoration: InputDecoration(
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(16),
@@ -176,6 +209,7 @@ class _AddPageState extends State<AddPage> {
         ),
         const SizedBox(height: 6),
         TextField(
+          controller: descriptionController,
           maxLines: 5,
           decoration: InputDecoration(
             border: OutlineInputBorder(
@@ -190,8 +224,7 @@ class _AddPageState extends State<AddPage> {
 
   Widget _AddButton() {
     return ElevatedButton(
-      onPressed: () {},
-      child: const Text('Add'),
+      onPressed: _saveProduct,
       style: ElevatedButton.styleFrom(
         minimumSize: const Size(350, 50),
         backgroundColor: Colors.blue,
@@ -200,13 +233,13 @@ class _AddPageState extends State<AddPage> {
           borderRadius: BorderRadius.circular(12),
         ),
       ),
+      child: const Text('Add'),
     );
   }
 
   Widget _DeleteButton() {
     return ElevatedButton(
       onPressed: () {},
-      child: const Text('Delete'),
       style: ElevatedButton.styleFrom(
         minimumSize: const Size(350, 50),
         backgroundColor: Colors.white,
@@ -219,6 +252,7 @@ class _AddPageState extends State<AddPage> {
           borderRadius: BorderRadius.circular(12),
         ),
       ),
+      child: const Text('Delete'),
     );
   }
 }
