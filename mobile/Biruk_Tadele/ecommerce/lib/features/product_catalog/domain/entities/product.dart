@@ -1,6 +1,8 @@
 // ignore_for_file: override_on_non_overriding_member
 
-class Product {
+import 'package:equatable/equatable.dart';
+
+class Product extends Equatable {
   final int id;
   final String name;
   final double price;
@@ -16,5 +18,5 @@ class Product {
   });
 
   @override
-  List<Object?> get props => [id, name, description, price, image];
-}
+  List<Object?> get props => [id, name, price, description, image];
+  }
