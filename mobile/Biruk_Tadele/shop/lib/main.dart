@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shop/pages/add_page.dart';
 import 'package:shop/pages/home_page.dart';
 void main() {
   runApp(const MyApp());
@@ -84,20 +83,7 @@ class _HomeState extends State<Home> {
         ],
       ),
       body: HomePage(),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) =>AddPage()),
-          );
-        },
-        shape: const CircleBorder(),
-        backgroundColor: Colors.blue,
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
-        ),
-      ),
+      
     );
   }
 }

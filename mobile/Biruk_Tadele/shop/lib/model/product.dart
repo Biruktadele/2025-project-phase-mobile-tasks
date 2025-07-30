@@ -18,6 +18,7 @@ class Product extends StatelessWidget {
   final String image;
   final String category;
   final String rating;
+  final String description;
 
   const Product({
     super.key,
@@ -26,6 +27,7 @@ class Product extends StatelessWidget {
     required this.image,
     required this.category,
     required this.rating,
+    required this.description,
   });
 
   @override
