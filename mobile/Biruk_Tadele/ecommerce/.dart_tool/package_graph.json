@@ -1,10 +1,10 @@
 {
   "roots": [
-    "flutter_lint_test"
+    "ecommerce"
   ],
   "packages": [
     {
-      "name": "flutter_lint_test",
+      "name": "ecommerce",
       "version": "1.0.0+1",
       "dependencies": [
         "connectivity_plus",
@@ -74,9 +74,45 @@
       ]
     },
     {
+      "name": "http",
+      "version": "1.4.0",
+      "dependencies": [
+        "async",
+        "http_parser",
+        "meta",
+        "web"
+      ]
+    },
+    {
       "name": "dartz",
       "version": "0.10.1",
       "dependencies": []
+    },
+    {
+      "name": "flutter_bloc",
+      "version": "8.1.6",
+      "dependencies": [
+        "bloc",
+        "flutter",
+        "provider"
+      ]
+    },
+    {
+      "name": "equatable",
+      "version": "2.0.7",
+      "dependencies": [
+        "collection",
+        "meta"
+      ]
+    },
+    {
+      "name": "get_it",
+      "version": "7.7.0",
+      "dependencies": [
+        "async",
+        "collection",
+        "meta"
+      ]
     },
     {
       "name": "flutter",
@@ -261,15 +297,10 @@
       ]
     },
     {
-      "name": "flutter_web_plugins",
-      "version": "0.0.0",
+      "name": "js",
+      "version": "0.6.7",
       "dependencies": [
-        "characters",
-        "collection",
-        "flutter",
-        "material_color_utilities",
-        "meta",
-        "vector_math"
+        "meta"
       ]
     },
     {
@@ -282,65 +313,15 @@
       ]
     },
     {
-      "name": "sky_engine",
+      "name": "flutter_web_plugins",
       "version": "0.0.0",
-      "dependencies": []
-    },
-    {
-      "name": "equatable",
-      "version": "2.0.7",
       "dependencies": [
+        "characters",
         "collection",
-        "meta"
-      ]
-    },
-    {
-      "name": "flutter_bloc",
-      "version": "8.1.6",
-      "dependencies": [
-        "bloc",
         "flutter",
-        "provider"
-      ]
-    },
-    {
-      "name": "js",
-      "version": "0.6.7",
-      "dependencies": [
-        "meta"
-      ]
-    },
-    {
-      "name": "bloc",
-      "version": "8.1.4",
-      "dependencies": [
-        "meta"
-      ]
-    },
-    {
-      "name": "get_it",
-      "version": "7.7.0",
-      "dependencies": [
-        "async",
-        "collection",
-        "meta"
-      ]
-    },
-    {
-      "name": "plugin_platform_interface",
-      "version": "2.1.8",
-      "dependencies": [
-        "meta"
-      ]
-    },
-    {
-      "name": "http",
-      "version": "1.4.0",
-      "dependencies": [
-        "async",
-        "http_parser",
+        "material_color_utilities",
         "meta",
-        "web"
+        "vector_math"
       ]
     },
     {
@@ -359,11 +340,25 @@
       ]
     },
     {
-      "name": "typed_data",
-      "version": "1.4.0",
+      "name": "provider",
+      "version": "6.1.5",
       "dependencies": [
-        "collection"
+        "collection",
+        "flutter",
+        "nested"
       ]
+    },
+    {
+      "name": "bloc",
+      "version": "8.1.4",
+      "dependencies": [
+        "meta"
+      ]
+    },
+    {
+      "name": "sky_engine",
+      "version": "0.0.0",
+      "dependencies": []
     },
     {
       "name": "dbus",
@@ -376,9 +371,25 @@
       ]
     },
     {
-      "name": "ffi",
-      "version": "2.1.4",
-      "dependencies": []
+      "name": "plugin_platform_interface",
+      "version": "2.1.8",
+      "dependencies": [
+        "meta"
+      ]
+    },
+    {
+      "name": "typed_data",
+      "version": "1.4.0",
+      "dependencies": [
+        "collection"
+      ]
+    },
+    {
+      "name": "nested",
+      "version": "1.0.0",
+      "dependencies": [
+        "flutter"
+      ]
     },
     {
       "name": "xml",
@@ -390,33 +401,22 @@
       ]
     },
     {
+      "name": "ffi",
+      "version": "2.1.4",
+      "dependencies": []
+    },
+    {
+      "name": "args",
+      "version": "2.7.0",
+      "dependencies": []
+    },
+    {
       "name": "petitparser",
       "version": "6.1.0",
       "dependencies": [
         "collection",
         "meta"
       ]
-    },
-    {
-      "name": "provider",
-      "version": "6.1.5",
-      "dependencies": [
-        "collection",
-        "flutter",
-        "nested"
-      ]
-    },
-    {
-      "name": "nested",
-      "version": "1.0.0",
-      "dependencies": [
-        "flutter"
-      ]
-    },
-    {
-      "name": "args",
-      "version": "2.7.0",
-      "dependencies": []
     }
   ],
   "configVersion": 1
