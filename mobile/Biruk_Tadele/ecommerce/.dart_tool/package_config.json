@@ -296,7 +296,7 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "flutter_lint_test",
+      "name": "ecommerce",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.8"
