@@ -10,9 +10,13 @@ abstract class Failure extends Equatable {
 }
 
 class ServerFailure extends Failure {
-  const ServerFailure(String message) : super(message);
+  const ServerFailure() : super('Server Failure');
 }
 
 class CacheFailure extends Failure {
-  const CacheFailure(String message) : super(message);
+  const CacheFailure() : super('Cache Failure');
+}
+
+class NetworkFailure extends Failure {
+  const NetworkFailure() : super('No Internet Connection.');
 }
