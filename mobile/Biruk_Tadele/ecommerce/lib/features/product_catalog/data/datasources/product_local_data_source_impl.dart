@@ -34,7 +34,7 @@ class ProductLocalDataSourceImpl implements ProductLocalDataSource {
           )
           .toList();
     } else {
-      throw CacheException();
+      throw CacheException(message: 'No cached products found');
     }
   }
 
@@ -51,7 +51,7 @@ class ProductLocalDataSourceImpl implements ProductLocalDataSource {
     try {
       return cachedList.firstWhere((product) => product.id == id);
     } catch (e) {
-      throw CacheException();
+      throw CacheException(message: 'No cached product found with id: $id');
     }
   }
 
