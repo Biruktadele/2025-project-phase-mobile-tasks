@@ -20,3 +20,6 @@ class CacheFailure extends Failure {
 class NetworkFailure extends Failure {
   const NetworkFailure() : super('No Internet Connection.');
 }
+class CacheException extends Failure {
+  const CacheException() : super('Cache Exception');
+}
