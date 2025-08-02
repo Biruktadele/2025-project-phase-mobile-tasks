@@ -7,7 +7,6 @@ import '../../domain/repositories/product_repository.dart';
 import '../datasources/local_data/product_local_data_source.dart';
 import '../datasources/remote_data/product_remote_data_source.dart';
 
-
 class ProductRepositoryImpl implements ProductRepository {
   final ProductRemoteDataSource remoteDataSource;
   final ProductLocalDataSource localDataSource;
@@ -19,14 +18,13 @@ class ProductRepositoryImpl implements ProductRepository {
     required this.networkInfo,
   });
 
- 
   @override
   Future<Either<Failure, List<Product>>> getAllProducts() async {
     if (await networkInfo.isConnected) {
       try {
         final remoteProducts = await remoteDataSource.getAllProducts();
         await localDataSource.cacheProducts(remoteProducts);
-        return  Right(remoteProducts);
+        return Right(remoteProducts);
       } catch (e) {
         return const Left(ServerFailure());
       }
@@ -45,7 +43,7 @@ class ProductRepositoryImpl implements ProductRepository {
       if (await networkInfo.isConnected) {
         try {
           final remoteProduct = await remoteDataSource.getProductById(id);
-         
+
           await localDataSource.cacheProduct(remoteProduct);
           return Right(remoteProduct);
         } catch (e) {
@@ -69,23 +67,22 @@ class ProductRepositoryImpl implements ProductRepository {
       }
     }
     return const Left(NetworkFailure());
-}
+  }
 
   @override
   Future<Either<Failure, void>> updateProduct(Product product) async {
     if (await networkInfo.isConnected) {
-        try {
-          await remoteDataSource.updateProduct(product);
-          await localDataSource.cacheProduct(product);
-          return const Right(null);
-        } catch (e) {
-          return const Left(ServerFailure());
-        }
+      try {
+        await remoteDataSource.updateProduct(product);
+        await localDataSource.cacheProduct(product);
+        return const Right(null);
+      } catch (e) {
+        return const Left(ServerFailure());
       }
-      
+    }
 
     return const Left(NetworkFailure());
-}
+  }
 
   @override
   Future<Either<Failure, void>> deleteProduct(int id) async {
