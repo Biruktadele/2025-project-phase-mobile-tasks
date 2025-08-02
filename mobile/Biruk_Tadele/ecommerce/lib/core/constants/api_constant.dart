@@ -1,4 +1,4 @@
-const String baseUrl = 'http://localhost:3000/api/v1';
+const String baseUrl = 'https://g5-flutter-learning-path-be.onrender.com';
 const Map<String, String> defaultHeaders = {
   'Content-Type': 'application/json; charset=UTF-8'
 };
