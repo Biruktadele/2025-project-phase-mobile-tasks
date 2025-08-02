@@ -104,7 +104,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Acknowledgments
 
 - [Flutter](https://flutter.dev/) for the amazing cross-platform framework
-- [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) by Robert C. Martin
 - [Dartz](https://pub.dev/packages/dartz) for functional programming in Dart
 
 ---
