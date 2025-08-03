@@ -32,6 +32,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "bloc_test",
+      "rootUri": "file:///C:/Users/biruk/AppData/Local/Pub/Cache/hosted/pub.dev/bloc_test-9.1.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///C:/Users/biruk/AppData/Local/Pub/Cache/hosted/pub.dev/boolean_selector-2.1.2",
       "packageUri": "lib/",
@@ -154,6 +160,12 @@
     {
       "name": "dartz",
       "rootUri": "file:///C:/Users/biruk/AppData/Local/Pub/Cache/hosted/pub.dev/dartz-0.10.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "diff_match_patch",
+      "rootUri": "file:///C:/Users/biruk/AppData/Local/Pub/Cache/hosted/pub.dev/diff_match_patch-0.4.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -348,6 +360,12 @@
       "rootUri": "file:///C:/Users/biruk/AppData/Local/Pub/Cache/hosted/pub.dev/mockito-5.5.0",
       "packageUri": "lib/",
       "languageVersion": "3.7"
+    },
+    {
+      "name": "mocktail",
+      "rootUri": "file:///C:/Users/biruk/AppData/Local/Pub/Cache/hosted/pub.dev/mocktail-1.0.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "nested",
