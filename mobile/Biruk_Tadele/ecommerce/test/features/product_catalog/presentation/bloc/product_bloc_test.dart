@@ -43,7 +43,7 @@ void main() {
     build: () {
       when(
         () => mockRepository.getAllProducts(),
-      ).thenAnswer((_) async => Right(tProductList as List<Product>));
+      ).thenAnswer((_) async => Right(tProductList));
       return productBloc;
     },
     act: (bloc) => bloc.add(const LoadAllProductsEvent()),
@@ -56,13 +56,13 @@ void main() {
     build: () {
       when(
         () => mockRepository.getProductById(1),
-      ).thenAnswer((_) async => Right(tProduct));
+      ).thenAnswer((_) async => const Right(tProduct));
       return productBloc;
     },
     act: (bloc) => bloc.add(const GetSingleProductEvent(1)),
     expect: () => [
       const ProductLoading(),
-      ProductLoaded([tProduct]),
+      const ProductLoaded([tProduct]),
     ],
   );
 
