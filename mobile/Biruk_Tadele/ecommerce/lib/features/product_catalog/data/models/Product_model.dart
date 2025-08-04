@@ -34,8 +34,8 @@ class ProductModel extends Product {
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
       id: json['id'],
-      name: json['name'],
-      price: json['price'],
+      name: json['title'],
+      price: (json['price'] as num).toDouble(),
       description: json['description'],
       image: json['image'],
     );

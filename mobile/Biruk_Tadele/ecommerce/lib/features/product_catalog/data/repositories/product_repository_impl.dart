@@ -24,12 +24,12 @@ class ProductRepositoryImpl implements ProductRepository {
       try {
         final remoteProducts = await remoteDataSource.getAllProducts();
         await localDataSource.cacheProducts(remoteProducts);
-        return Right(remoteProducts);
+        return  Right(remoteProducts);
       } catch (e) {
-        return const Left(ServerFailure());
+        return Left(ServerFailure(e.toString()));
       }
     }
-    return const Left(NetworkFailure());
+    return const Left(NetworkFailure('No Internet Connection.'));
   }
 
   @override
@@ -47,10 +47,10 @@ class ProductRepositoryImpl implements ProductRepository {
           await localDataSource.cacheProduct(remoteProduct);
           return Right(remoteProduct);
         } catch (e) {
-          return const Left(ServerFailure());
+          return Left(ServerFailure(e.toString()));
         }
       } else {
-        return const Left(NetworkFailure());
+        return const Left(NetworkFailure('No Internet Connection.'));
       }
     }
   }
@@ -63,10 +63,10 @@ class ProductRepositoryImpl implements ProductRepository {
         await localDataSource.cacheProduct(product);
         return const Right(null);
       } catch (e) {
-        return const Left(ServerFailure());
+        return Left(ServerFailure(e.toString()));
       }
     }
-    return const Left(NetworkFailure());
+    return const Left(NetworkFailure('No Internet Connection.'));
   }
 
   @override
@@ -77,11 +77,11 @@ class ProductRepositoryImpl implements ProductRepository {
         await localDataSource.cacheProduct(product);
         return const Right(null);
       } catch (e) {
-        return const Left(ServerFailure());
+        return Left(ServerFailure(e.toString()));
       }
     }
 
-    return const Left(NetworkFailure());
+    return const Left(NetworkFailure('No Internet Connection.'));
   }
 
   @override
@@ -92,10 +92,10 @@ class ProductRepositoryImpl implements ProductRepository {
         await localDataSource.removeCachedProduct(id);
         return const Right(null);
       } catch (e) {
-        return const Left(ServerFailure());
+        return Left(ServerFailure(e.toString()));
       }
     } else {
-      return const Left(NetworkFailure());
+      return const Left(NetworkFailure('No Internet Connection.'));
     }
   }
 }
